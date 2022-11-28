@@ -30,3 +30,5 @@ const postSchema=mongoose.Schema({
 }, {timestamps:true})
 
 //créer et exporter un Modéle Post
+const postschema = mongoose.model('postSchema', postSchema);
+module.exports = postschema;
