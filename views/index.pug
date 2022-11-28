@@ -1,1 +1,36 @@
 <!-- Liste de tous les posts -->
+doctype html
+html 
+    head
+        title MyBlog 
+        link(rel="stylesheet", href="../css/style.css")
+
+    body
+        div(class="navbar") 
+            h1(class="head") Notre blog 
+
+    a(href="/" class="float")="Home"
+    a(href="/addpost" class="float2")="Add"
+
+    //- i(class="fa fa-plus my-float")
+    
+    //- a(href="#" class="float")
+    //- i(class="fa fa-plus my-float2")
+    section(id="posts")
+        each element in thispost
+            div(class="onepost")
+                div(class="postheader")
+                    h1=element.titre
+                    div(class="postoperations")
+                        a(href="./delete/"+element._id) delete
+                        p="/"
+                        a(href="./update/"+element._id) Update
+
+
+                p="Auteur :"+element.auteur
+                p="Date de creation :"+element._id.getTimestamp()
+                p="Date de modifiation :"+element._id.getTimestamp()
+                p(class="resume")="Resume" 
+                p(class="postcontent")=element.resume 
+                a( href="./getpost/"+element._id)= "read more......"
+
