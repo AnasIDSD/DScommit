@@ -1,1 +1,29 @@
 <!-- Detail d'un post -->
+doctype html
+html 
+    head
+        title MyBlog 
+        link(rel="stylesheet", href="../css/style.css")
+
+    body
+        div(class="navbar") 
+            h1(class="head") Notre blog 
+
+    a(href="/" class="float")="Home"
+    a(href="/addpost" class="float2")="Add"
+
+    section(id="posts")
+        each element in thispost
+            div(class="onepost")
+                div(class="postheader")
+                    h1=element.titre
+                    div(class="postoperations")
+                        a(href="./delete/"+element._id) delete
+                        p="/"
+                        a(href="./update/"+element._id) Update
+
+
+                p="Auteur :"+element.auteur
+                p="Date de creation :"+element._id.getTimestamp()
+                p="Date de modifiation :"+element._id.getTimestamp()
+                p=element.content
