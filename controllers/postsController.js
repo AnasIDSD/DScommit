@@ -45,16 +45,16 @@ async function addPost(req,res){
          content: req.body.content
          
      })
-     async function main(thisdata) {
+     async function addp(thisdata) {
      
          const { MongoClient } = require('mongodb');
-         const client = new MongoClient(process.env.DB_URI)
+         const client = new MongoClient("mongodb+srv://myblog:31BAakJZVotfPWll@cluster0.ybqupzv.mongodb.net/?retryWrites=true&w=majority")
          await client.connect();
          const db = client.db('myblog')
          const collection = db.collection('posts')
          await collection.insertOne(thisdata)
      }
-     main(thisdata).catch(console.error)
+     addp(thisdata).catch(console.error)
      res.redirect('/')
  }
 async function renderaddPost(req,res){
@@ -62,6 +62,8 @@ async function renderaddPost(req,res){
 }
 async function editPost(req,res){
     //Recupérer un post definie par son _id et renvoyer au client editPost.pug avec les donnée de ce post
+
+
 }
 async function updatePost(req,res){
     //metre à jour un post et rediriger le client vers ce post
@@ -69,6 +71,20 @@ async function updatePost(req,res){
 
 async function deletePost(req,res){
     //Suprimer un post et rediriger le client vers /
+    id = req.params.id
+    async function deletfunc() {
+        const { MongoClient } = require('mongodb');
+        const client = new MongoClient("mongodb+srv://myblog:31BAakJZVotfPWll@cluster0.ybqupzv.mongodb.net/?retryWrites=true&w=majority")
+        await client.connect();
+        const db = client.db('myblog')
+        const collection = db.collection('posts')
+        await collection.deleteOne({ _id: ObjectID(id) })
+        const post = await collection.find().toArray()
+        return post
+    }
+    const thispost = deletfunc().catch(console.error)
+
+    res.render('index', {thispost: await thispost})
 }
 
 module.exports={getPosts,getPost,addPost,updatePost,editPost,deletePost,renderaddPost}

@@ -33,3 +33,26 @@ html
                 div(class="textdiv")
                     textarea(id="content" name="content" rows="25" cols="100") 
                     button(class="formbutton",type="submit" style="margin: 10px;") Add Post
+                    
+            
+        form( id="myform", action="/addpost", method="post") 
+            div(class = "formblock")
+                label(for="titre") Titre 
+                input( id ="titre" name ="titre" type="text")
+                    
+                
+            div(class = "formblock")
+
+                label(for="auteur") auteur 
+                input( id ="auteur" name ="auteur" type="text")
+                    
+                
+            div(class = "formblock")
+                label(for="resume") resume 
+                input(type="text" name="resume" id="resume")
+
+            div(class="formblock")
+                p content 
+                div(class="textdiv")
+                    textarea(id="content" name="content" rows="25" cols="100") 
+                    button(class="formbutton",type="submit" style="margin: 10px;") Add Post                    
