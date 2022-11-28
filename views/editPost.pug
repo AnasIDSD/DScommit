@@ -11,7 +11,7 @@ html
 
     a(href="/" class="float")="Home"
     div(class="Formdes")
-                
+                //-add if statement 
         form( id="myform", action="/addpost", method="post") 
             div(class = "formblock")
                 label(for="titre") Titre 
@@ -33,8 +33,9 @@ html
                 div(class="textdiv")
                     textarea(id="content" name="content" rows="25" cols="100") 
                     button(class="formbutton",type="submit" style="margin: 10px;") Add Post
-                    
-            
+
+                          //-add else
+  
         form( id="myform", action="/addpost", method="post") 
             div(class = "formblock")
                 label(for="titre") Titre 
